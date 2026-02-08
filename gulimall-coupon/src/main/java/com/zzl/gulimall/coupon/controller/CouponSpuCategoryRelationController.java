@@ -28,7 +28,7 @@ import com.zzl.gulimall.common.core.page.TableDataInfo;
  * @date 2026-02-01
  */
 @RestController
-@RequestMapping("/coupon/relation")
+@RequestMapping("/coupon/relation/category")
 public class CouponSpuCategoryRelationController extends BaseController
 {
     @Autowired

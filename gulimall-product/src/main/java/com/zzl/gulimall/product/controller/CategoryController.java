@@ -37,68 +37,12 @@ public class CategoryController extends BaseController
     /**
      * 查询商品三级分类列表
      */
-    @PreAuthorize("@ss.hasPermi('product:category:list')")
-    @GetMapping("/list")
-    public TableDataInfo list(Category category)
+    @GetMapping("/list/tree")
+    public TableDataInfo list()
     {
-        startPage();
-        List<Category> list = categoryService.selectCategoryList(category);
+        List<Category> list = categoryService.listWithTree();
         return getDataTable(list);
     }
 
-    /**
-     * 导出商品三级分类列表
-     */
-    @PreAuthorize("@ss.hasPermi('product:category:export')")
-    @Log(title = "商品三级分类", businessType = BusinessType.EXPORT)
-    @PostMapping("/export")
-    public void export(HttpServletResponse response, Category category)
-    {
-        List<Category> list = categoryService.selectCategoryList(category);
-        ExcelUtil<Category> util = new ExcelUtil<Category>(Category.class);
-        util.exportExcel(response, list, "商品三级分类数据");
-    }
 
-    /**
-     * 获取商品三级分类详细信息
-     */
-    @PreAuthorize("@ss.hasPermi('product:category:query')")
-    @GetMapping(value = "/{catId}")
-    public AjaxResult getInfo(@PathVariable("catId") Long catId)
-    {
-        return success(categoryService.selectCategoryByCatId(catId));
-    }
-
-    /**
-     * 新增商品三级分类
-     */
-    @PreAuthorize("@ss.hasPermi('product:category:add')")
-    @Log(title = "商品三级分类", businessType = BusinessType.INSERT)
-    @PostMapping
-    public AjaxResult add(@RequestBody Category category)
-    {
-        return toAjax(categoryService.insertCategory(category));
-    }
-
-    /**
-     * 修改商品三级分类
-     */
-    @PreAuthorize("@ss.hasPermi('product:category:edit')")
-    @Log(title = "商品三级分类", businessType = BusinessType.UPDATE)
-    @PutMapping
-    public AjaxResult edit(@RequestBody Category category)
-    {
-        return toAjax(categoryService.updateCategory(category));
-    }
-
-    /**
-     * 删除商品三级分类
-     */
-    @PreAuthorize("@ss.hasPermi('product:category:remove')")
-    @Log(title = "商品三级分类", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{catIds}")
-    public AjaxResult remove(@PathVariable Long[] catIds)
-    {
-        return toAjax(categoryService.deleteCategoryByCatIds(catIds));
-    }
 }

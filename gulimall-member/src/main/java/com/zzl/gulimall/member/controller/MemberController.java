@@ -1,7 +1,10 @@
 package com.zzl.gulimall.member.controller;
 
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.zzl.gulimall.member.feign.CouponFeignService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,20 @@ public class MemberController extends BaseController
 {
     @Autowired
     private IMemberService memberService;
+
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    @RequestMapping("coupons")
+    public TableDataInfo test()
+    {
+        Member member = new Member();
+        member.setNickname("小珍");
+        TableDataInfo coupons = couponFeignService.memberCoupon();
+        List<?> couponsRows = coupons.getRows();
+        String o = (String) couponsRows.get(0);
+        return getDataTable(Collections.singletonList(o));
+    }
 
     /**
      * 查询会员列表

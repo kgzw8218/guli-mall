@@ -1,6 +1,9 @@
 package com.zzl.gulimall.coupon.controller;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +36,12 @@ public class CouponController extends BaseController
 {
     @Autowired
     private ICouponService couponService;
+
+    @GetMapping("/member/list")
+    public TableDataInfo memberCoupon()
+    {
+        return getDataTable(Collections.singletonList("满100减50"));
+    }
 
     /**
      * 查询优惠券信息列表

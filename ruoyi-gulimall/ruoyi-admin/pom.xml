@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ruoyi</artifactId>
+        <artifactId>ruoyi-gulimall</artifactId>
         <groupId>com.ruoyi</groupId>
         <version>3.9.1</version>
     </parent>
@@ -16,6 +16,12 @@
     </description>
 
     <dependencies>
+
+        <!--<dependency>-->
+        <!--    <groupId>com.zzl.gulimall</groupId>-->
+        <!--    <artifactId>gulimall-common</artifactId>-->
+        <!--    <version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
         <!-- spring-boot-devtools -->
         <dependency>
@@ -59,6 +65,18 @@
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-generator</artifactId>
+        </dependency>
+
+        <!--nacos 注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!--nacos 配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
     </dependencies>

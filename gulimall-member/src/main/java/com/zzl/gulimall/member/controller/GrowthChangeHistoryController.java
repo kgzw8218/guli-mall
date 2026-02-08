@@ -28,7 +28,7 @@ import com.zzl.gulimall.common.core.page.TableDataInfo;
  * @date 2026-02-01
  */
 @RestController
-@RequestMapping("/member/history")
+@RequestMapping("/member/growth/history")
 public class GrowthChangeHistoryController extends BaseController
 {
     @Autowired

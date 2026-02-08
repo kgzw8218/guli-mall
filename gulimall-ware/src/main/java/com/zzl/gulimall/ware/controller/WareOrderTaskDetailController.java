@@ -28,7 +28,7 @@ import com.zzl.gulimall.common.core.page.TableDataInfo;
  * @date 2026-02-01
  */
 @RestController
-@RequestMapping("/ware/detail")
+@RequestMapping("/ware/task/detail")
 public class WareOrderTaskDetailController extends BaseController
 {
     @Autowired

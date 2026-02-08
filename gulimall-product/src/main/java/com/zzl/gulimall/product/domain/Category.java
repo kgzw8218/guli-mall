@@ -1,9 +1,15 @@
 package com.zzl.gulimall.product.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.zzl.gulimall.common.annotation.Excel;
 import com.zzl.gulimall.common.core.domain.BaseEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 商品三级分类对象 pms_category
@@ -11,6 +17,9 @@ import com.zzl.gulimall.common.core.domain.BaseEntity;
  * @author zzl
  * @date 2026-02-01
  */
+@Getter
+@Setter
+@ToString
 public class Category extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
@@ -36,7 +45,7 @@ public class Category extends BaseEntity
 
     /** 排序 */
     @Excel(name = "排序")
-    private Long sort;
+    private Integer sort;
 
     /** 图标地址 */
     @Excel(name = "图标地址")
@@ -50,108 +59,5 @@ public class Category extends BaseEntity
     @Excel(name = "商品数量")
     private Long productCount;
 
-    public void setCatId(Long catId) 
-    {
-        this.catId = catId;
-    }
-
-    public Long getCatId() 
-    {
-        return catId;
-    }
-
-    public void setName(String name) 
-    {
-        this.name = name;
-    }
-
-    public String getName() 
-    {
-        return name;
-    }
-
-    public void setParentCid(Long parentCid) 
-    {
-        this.parentCid = parentCid;
-    }
-
-    public Long getParentCid() 
-    {
-        return parentCid;
-    }
-
-    public void setCatLevel(Long catLevel) 
-    {
-        this.catLevel = catLevel;
-    }
-
-    public Long getCatLevel() 
-    {
-        return catLevel;
-    }
-
-    public void setShowStatus(Integer showStatus) 
-    {
-        this.showStatus = showStatus;
-    }
-
-    public Integer getShowStatus() 
-    {
-        return showStatus;
-    }
-
-    public void setSort(Long sort) 
-    {
-        this.sort = sort;
-    }
-
-    public Long getSort() 
-    {
-        return sort;
-    }
-
-    public void setIcon(String icon) 
-    {
-        this.icon = icon;
-    }
-
-    public String getIcon() 
-    {
-        return icon;
-    }
-
-    public void setProductUnit(String productUnit) 
-    {
-        this.productUnit = productUnit;
-    }
-
-    public String getProductUnit() 
-    {
-        return productUnit;
-    }
-
-    public void setProductCount(Long productCount) 
-    {
-        this.productCount = productCount;
-    }
-
-    public Long getProductCount() 
-    {
-        return productCount;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("catId", getCatId())
-            .append("name", getName())
-            .append("parentCid", getParentCid())
-            .append("catLevel", getCatLevel())
-            .append("showStatus", getShowStatus())
-            .append("sort", getSort())
-            .append("icon", getIcon())
-            .append("productUnit", getProductUnit())
-            .append("productCount", getProductCount())
-            .toString();
-    }
+    private List<Category> children;
 }
